@@ -15,20 +15,15 @@ public class DemoJdbc {
         String url = "jdbc:postgresql://localhost:5432/demo";
         String uname = "postgres";
         String pass = "DiluPostgreSQL@2026";
-        String sql = "SELECT * FROM student";
+        String sql = "delete from student where sid=4";
 
         //Class.forName("org.postgresql.Driver");
         Connection con = DriverManager.getConnection(url, uname, pass);
         System.out.println("Connected to database successfully");
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-//        rs.next();
-//        String name = rs.getString("sname");
-//        System.out.println("Name of a student is " + name);
+        st.execute(sql);
 
-        while (rs.next()) {
-            System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getInt(3));
-        }
+
 
         con.close();
         System.out.println("Connection closed successfully");
